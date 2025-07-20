@@ -5,14 +5,14 @@ const http = require("http");
 const app = require("../app");
 const env = require(`../environment/${process.env.NODE_ENV}`);
 
-// const httpServer = http.createServer((req, res) => {
-//   res.writeHead(301, { Location: `https://${ req.headers.host }${ req.url }`});
-//   res.end();
-// }).listen(80);
+const httpServer = http.createServer((req, res) => {
+  res.writeHead(301, { Location: `https://${ req.headers.host }${ req.url }`});
+  res.end();
+}).listen(80);
 
-// const httpsServer = https.createServer({
-//   key: fs.readFileSync(env.key),
-//   cert: fs.readFileSync(env.cert),
-// }, app).listen(443);
+const httpsServer = https.createServer({
+  key: fs.readFileSync(env.key),
+  cert: fs.readFileSync(env.cert),
+}, app).listen(443);
 
-const httpServer = http.createServer(app).listen(80);
+// const httpServer = http.createServer(app).listen(80);
